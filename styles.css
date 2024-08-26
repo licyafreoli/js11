@@ -1,0 +1,136 @@
+/* Reset básico para garantir consistência */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Configurações gerais da página */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #00aaff, #0047ab);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #fff;
+}
+
+/* Container principal do quiz */
+.quiz-container {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    width: 350px;
+    max-width: 100%;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.quiz-container:hover {
+    transform: scale(1.02);
+}
+
+/* Estilo da pergunta */
+#question {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Estilo dos botões de opções */
+.option-button {
+    background: #007bff;
+    border: none;
+    color: #fff;
+    padding: 15px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    width: calc(100% - 20px); /* Ajuste para compensar a margem */
+    font-size: 1.1em;
+    position: relative;
+}
+
+.option-button::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease;
+    z-index: 0;
+}
+
+.option-button:hover::before {
+    width: 120%;
+}
+
+.option-button:hover {
+    background: #0056b3;
+    transform: translateY(-4px);
+    z-index: 1;
+}
+
+.option-button:focus {
+    outline: none;
+}
+
+/* Estilo do feedback */
+#feedback {
+    font-size: 1.2em;
+    margin: 20px 0;
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.1);
+    color: #333;
+    font-weight: bold;
+}
+
+/* Estilo do botão de recarregar */
+#reload-btn {
+    background: #28a745;
+    border: none;
+    color: #fff;
+    padding: 12px 25px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    margin-top: 20px;
+}
+
+#reload-btn:hover {
+    background: #218838;
+    transform: translateY(-4px);
+}
+
+#reload-btn:disabled {
+    background: #d6d6d6;
+    cursor: not-allowed;
+}
+
+/* Animação para a resposta */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#feedback {
+    animation: fadeIn 0.5s ease-in-out;
+}
